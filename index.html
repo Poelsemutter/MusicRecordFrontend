@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Records</title>
+</head>
+<body>
+    <main id="app">
+        <h1>Music Records</h1>
+        <p v-if="loading">Loading...</p>
+        <p v-else-if="error" role="alert">{{ error }}</p>
+        <ul v-else>
+            <li v-for="record in records" :key="record.id">
+                <h2>{{ record.title }}</h2>
+                <p>Artist: {{ record.artist }}</p>
+                <p>Year: {{ record.publicationYear }}</p>
+                <p>Duration: {{ record.duration }}</p>
+            </li>
+        </ul>
+    </main>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+</html>
