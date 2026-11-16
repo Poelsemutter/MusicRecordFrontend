@@ -11,7 +11,7 @@
 
             <input v-model="title" placeholder="Title" />
             <input v-model="artist" placeholder="Artist" />
-            <input v-model="year" placeholder="year" />
+            <input v-model="publiyear" placeholder="year" />
             <button @click="search">Search</button>
             
 
@@ -22,7 +22,7 @@
             <li v-for="record in records" :key="record.id">
                 <h2>{{ record.title }}</h2>
                 <p>Artist: {{ record.artist }}</p>
-                <p>Year: {{ record.publicationYear }}</p>
+                <p>Year: {{ record.year }}</p>
                 <p>Duration: {{ record.duration }}</p>
             </li>
         </ul>

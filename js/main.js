@@ -6,7 +6,8 @@ const app = Vue.createApp({
             loading: true,
             error: null,
             title: "",
-            artist: ""
+            artist: "",
+            year: ""
         };
     },
     methods: {
@@ -15,7 +16,7 @@ const app = Vue.createApp({
          this.error = null;
          try {
             const response = await axios.get(
-                `${baseUrl}?title=${this.title}&artist=${this.artist}`,
+                `${baseUrl}?title=${this.title}&artist=${this.artist}&year=${this.year}`,
             );
             this.records = response.data;
          } catch (error) {
