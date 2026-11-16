@@ -54,6 +54,12 @@ const app = Vue.createApp({
          }
         }
     },
+
+    computed: {
+        isLoggedIn() {
+            return !!this.token;
+        }
+    },
     async mounted() {
         if (this.token) {
             axios.defaults.headers.common["Authorization"] = `Bearer ${this.token}`;
