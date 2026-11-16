@@ -7,7 +7,7 @@ const app = Vue.createApp({
             error: null,
             title: "",
             artist: "",
-            year: ""
+            publicationYear: null
         };
     },
     methods: {
@@ -15,9 +15,13 @@ const app = Vue.createApp({
          this.loading = true;
          this.error = null;
          try {
-            const response = await axios.get(
-                `${baseUrl}?title=${this.title}&artist=${this.artist}&year=${this.year}`,
-            );
+            const response = await axios.get(baseUrl, {
+                params: {
+                    title: this.title,
+                    artist: this.artist,
+                    publicationYear: this.publicationYear 
+                }
+            });
             this.records = response.data;
          } catch (error) {
             this.error = error instanceof Error
@@ -29,20 +33,7 @@ const app = Vue.createApp({
         }
     },
     async mounted() {
-        try {
-            const response = await axios.get(
-                "baseUrl",
-            );
-            this.records = response.data;
-        } catch (error) {
-            this.error = error instanceof Error
-                ? error.message
-                : "Unable to load the records.";
-        } finally {
-            this.loading = false;
-        }
         this.search();
-
     },
 });
 
