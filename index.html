@@ -8,6 +8,15 @@
 <body>
     <main id="app">
         <h1>Music Records</h1>
+        <div>
+
+        <h2>Login to access the music records</h2>
+        <input v-model="username" placeholder="Username" />
+        <input v-model="password" type="password" placeholder="Password" />
+        <button @click="login">Login</button>
+        <p v-if="loginError" role="alert">{{ loginError }}</p>
+        </div>
+        <div v-if="isLoggedIn">
 
             <input v-model="title" placeholder="Title" />
             <input v-model="artist" placeholder="Artist" />
@@ -26,6 +35,11 @@
                 <p>Duration: {{ record.duration }}</p>
             </li>
         </ul>
+
+        </div>
+
+
+
     </main>
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
