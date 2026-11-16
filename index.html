@@ -18,7 +18,8 @@
         <p v-if="loginError" role="alert">{{ loginError }}</p>
         </div>
         <div v-if="isLoggedIn">
-
+            <button @click="logout">Logout</button>
+            <div></div>
             <input v-model="title" placeholder="Title" />
             <input v-model="artist" placeholder="Artist" />
             <input v-model.number="publicationYear" type="number" placeholder="publication year" />

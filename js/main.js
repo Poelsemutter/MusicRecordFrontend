@@ -32,7 +32,12 @@ const app = Vue.createApp({
                     : "Unable to login.";
             }
         },
-
+        logout() {
+            this.token = null;
+            localStorage.removeItem("token");
+            delete axios.defaults.headers.common["Authorization"];
+            this.records = [];
+        },
         async search() {
          this.loading = true;
          this.error = null;
