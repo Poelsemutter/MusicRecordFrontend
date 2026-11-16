@@ -1,4 +1,4 @@
-
+const baseUrl = "https://musicrecordapi20261112102328-ekakdscpg7epbrfn.brazilsouth-01.azurewebsites.net/api/musicrecord";
 const app = Vue.createApp({
     data() {
         return {
@@ -11,19 +11,26 @@ const app = Vue.createApp({
     },
     methods: {
         async search() {
-            const params = new URLSearchParams({ title: this.title, artist: this.artist });
+         this.loading = true;
+         this.error = null;
+         try {
             const response = await axios.get(
-                `https://musicrecordapi20261112102328-ekakdscpg7epbrfn.brazilsouth-01.azurewebsites.net/api/musicrecord?${params}`)
-            this.records = await response.json()
-
-            // const data = await response.json();
-            // this.records = data;
+                `${baseUrl}?title=${this.title}&artist=${this.artist}`,
+            );
+            this.records = response.data;
+         } catch (error) {
+            this.error = error instanceof Error
+                ? error.message
+                : "Unable to search for records.";
+         } finally {
+            this.loading = false;
+         }
         }
     },
     async mounted() {
         try {
             const response = await axios.get(
-                "https://musicrecordapi20261112102328-ekakdscpg7epbrfn.brazilsouth-01.azurewebsites.net/api/musicrecord",
+                "baseUrl",
             );
             this.records = response.data;
         } catch (error) {
@@ -33,7 +40,7 @@ const app = Vue.createApp({
         } finally {
             this.loading = false;
         }
-        try {
+        this.search();
 
     },
 });
