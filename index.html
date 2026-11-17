@@ -21,7 +21,7 @@
             <input id="Password" v-model="password" type="password" placeholder="Password" aria-label="Password" />
         </div>
         <button id="LoginButton" class="primary-button" @click="login">Login</button>
-        <p v-if="loginError" class="message error-message" role="alert">{{ loginError }}</p>
+        <p v-if="loginError" class="message error-message" role="alert">{{ error }}</p>
         </div>
         <div v-if="isLoggedIn" class="dashboard">
             <div class="toolbar">
@@ -38,6 +38,7 @@
                     <input id="PublicationYear" v-model.number="publicationYear" type="number" placeholder="Publication year" aria-label="Publication year" />
                     <button id="SearchButton" class="primary-button" @click="search">Search records</button>
                     <button id="AddRecordButton" class="secondary-button" @click="add">Add Record</button>
+                    <button id="DeleteRecordButton" class="secondary-button" @click="deleteRecord">Delete Record</button>
                 </div>
             </div>
 
