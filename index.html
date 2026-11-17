@@ -4,32 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Music Records</title>
+    <link rel="stylesheet" href="./ccs/styles.css">
 </head>
 <body>
     <main id="app">
-        <h1>Music Records</h1>
-        <div v-if="!isLoggedIn">
+        <header class="page-header">
+            <p class="eyebrow">The record collection</p>
+            <h1>Music Records</h1>
+            <p class="intro">Search, discover, and keep track of the music worth listening to.</p>
+        </header>
+        <div v-if="!isLoggedIn" class="panel login-panel">
 
         <h2>Login to access the music records</h2>
-        
-        <input v-model="username" placeholder="Username" />
-        <input v-model="password" type="password" placeholder="Password" />
-        <button @click="login">Login</button>
-        <p v-if="loginError" role="alert">{{ loginError }}</p>
+        <div class="form-grid">
+            <input v-model="username" placeholder="Username" aria-label="Username" />
+            <input v-model="password" type="password" placeholder="Password" aria-label="Password" />
         </div>
-        <div v-if="isLoggedIn">
-            <button @click="logout">Logout</button>
-            <div></div>
-            <input v-model="title" placeholder="Title" />
-            <input v-model="artist" placeholder="Artist" />
-            <input v-model.number="publicationYear" type="number" placeholder="publication year" />
-            <button @click="search">Search</button>
-            
+        <button class="primary-button" @click="login">Login</button>
+        <p v-if="loginError" class="message error-message" role="alert">{{ loginError }}</p>
+        </div>
+        <div v-if="isLoggedIn" class="dashboard">
+            <div class="toolbar">
+                <div>
+                    <p class="eyebrow">Your library</p>
+                    <h2>Find a record</h2>
+                </div>
+                <button class="secondary-button" @click="logout">Log out</button>
+            </div>
+            <div class="panel search-panel">
+                <div class="form-grid search-grid">
+                    <input v-model="title" placeholder="Title" aria-label="Title" />
+                    <input v-model="artist" placeholder="Artist" aria-label="Artist" />
+                    <input v-model.number="publicationYear" type="number" placeholder="Publication year" aria-label="Publication year" />
+                    <button class="primary-button" @click="search">Search records</button>
+                </div>
+            </div>
 
 
-        <p v-if="loading">Loading...</p>
-        <p v-else-if="error" role="alert">{{ error }}</p>
-        <ul v-else>
+        <p v-if="loading" class="message status-message">Loading records...</p>
+        <p v-else-if="error" class="message error-message" role="alert">{{ error }}</p>
+        <ul v-else class="record-grid">
             <li v-for="record in records" :key="record.id">
                 <h2>{{ record.title }}</h2>
                 <p>Artist: {{ record.artist }}</p>
