@@ -36,8 +36,8 @@
                     <input id="Title" v-model="title" placeholder="Title" aria-label="Title" />
                     <input id="Artist" v-model="artist" placeholder="Artist" aria-label="Artist" />
                     <input id="PublicationYear" v-model.number="publicationYear" type="number" placeholder="Publication year" aria-label="Publication year" />
-                    <button class="primary-button" @click="search">Search records</button>
-                    <button class="secondary-button" @click="add">Add Record</button>
+                    <button id="SearchButton" class="primary-button" @click="search">Search records</button>
+                    <button id="AddRecordButton" class="secondary-button" @click="add">Add Record</button>
                 </div>
             </div>
 
