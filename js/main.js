@@ -83,6 +83,9 @@ const app = Vue.createApp({
                 this.loading = false;
                 const updatedResponse = await axios.get(baseUrl, {});
                 this.records = updatedResponse.data;
+                this.title = "";
+                this.artist = "";
+                this.publicationYear = null;
             }
             
         },
