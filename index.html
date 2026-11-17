@@ -20,7 +20,7 @@
             <input id="Username" v-model="username" placeholder="Username" aria-label="Username" />
             <input id="Password" v-model="password" type="password" placeholder="Password" aria-label="Password" />
         </div>
-        <button class="primary-button" @click="login">Login</button>
+        <button id="LoginButton" class="primary-button" @click="login">Login</button>
         <p v-if="loginError" class="message error-message" role="alert">{{ loginError }}</p>
         </div>
         <div v-if="isLoggedIn" class="dashboard">
@@ -29,7 +29,7 @@
                     <p class="eyebrow">Your library</p>
                     <h2>Find a record</h2>
                 </div>
-                <button class="secondary-button" @click="logout">Log out</button>
+                <button id="LogoutButton" class="secondary-button" @click="logout">Log out</button>
             </div>
             <div class="panel search-panel">
                 <div class="form-grid search-grid">
