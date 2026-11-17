@@ -17,8 +17,8 @@
 
         <h2>Login to access the music records</h2>
         <div class="form-grid">
-            <input v-model="username" placeholder="Username" aria-label="Username" />
-            <input v-model="password" type="password" placeholder="Password" aria-label="Password" />
+            <input id="Username" v-model="username" placeholder="Username" aria-label="Username" />
+            <input id="Password" v-model="password" type="password" placeholder="Password" aria-label="Password" />
         </div>
         <button class="primary-button" @click="login">Login</button>
         <p v-if="loginError" class="message error-message" role="alert">{{ loginError }}</p>
@@ -33,9 +33,9 @@
             </div>
             <div class="panel search-panel">
                 <div class="form-grid search-grid">
-                    <input v-model="title" placeholder="Title" aria-label="Title" />
-                    <input v-model="artist" placeholder="Artist" aria-label="Artist" />
-                    <input v-model.number="publicationYear" type="number" placeholder="Publication year" aria-label="Publication year" />
+                    <input id="Title" v-model="title" placeholder="Title" aria-label="Title" />
+                    <input id="Artist" v-model="artist" placeholder="Artist" aria-label="Artist" />
+                    <input id="PublicationYear" v-model.number="publicationYear" type="number" placeholder="Publication year" aria-label="Publication year" />
                     <button class="primary-button" @click="search">Search records</button>
                     <button class="secondary-button" @click="add">Add Record</button>
                 </div>
