@@ -38,6 +38,32 @@ const app = Vue.createApp({
             delete axios.defaults.headers.common["Authorization"];
             this.records = [];
         },
+        async deleteRecord() {
+            this.loading = true;
+            this.error = null;
+            try {
+                const response = await axios.get(baseUrl, {
+                    params: {
+                        title: this.title
+                    }
+                });
+
+                await Promise.all(
+                    response.data.map(record =>
+                        axios.delete(`${baseUrl}/${record.id}`)
+                    )
+                );
+
+                await this.search();
+            } catch (error) {
+                this.error = error instanceof Error
+                    ? error.message
+                    : "Unable to delete records.";
+            } finally {
+                this.loading = false;
+            }
+        },
+
         async search() {
          this.loading = true;
          this.error = null;
