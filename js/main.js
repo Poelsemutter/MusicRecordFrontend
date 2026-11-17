@@ -15,6 +15,24 @@ const app = Vue.createApp({
         };
     },
     methods: {
+        async add() {
+            try {
+                const response = await axios.post(baseUrl, {
+                    title: this.title,
+                    artist: this.artist,
+                    publicationYear: this.publicationYear
+                });
+                this.records.push(response.data);
+                this.title = "";
+                this.artist = "";
+                this.publicationYear = null;
+            }
+            catch (error) {
+                this.error = error instanceof Error
+                    ? error.message
+                    : "Unable to add record.";
+            }
+        },
         async login() {
            try {
                 const response = await axios.post(`${authUrl}/login`, {
